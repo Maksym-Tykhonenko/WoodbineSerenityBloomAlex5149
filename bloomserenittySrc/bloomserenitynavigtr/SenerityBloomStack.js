@@ -86,7 +86,7 @@ const SenerityBloomStack = () => {
     };
 
     finalizeProcess();
-  }, [isDataReady, uid]); // Викликати, коли isDataReady або uid змінюється
+  }, [isDataReady, uid, pushOpenWebview]); // Викликати, коли isDataReady або uid змінюється
 
   // uniq_visit
   const checkUniqVisit = async () => {
