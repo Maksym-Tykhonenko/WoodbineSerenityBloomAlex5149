@@ -28,8 +28,8 @@ const ProductScreen = ({navigation, route}) => {
   const [hashMail, setHashMail] = useState('');
   const [hashTel, setHashTel] = useState('');
 
-    const INITIAL_URL = `https://light-hub-web.site/`;
-    const URL_IDENTIFAIRE = `7L64kVRx`;
+    const INITIAL_URL = `https://sleek-zone-pro.site/`;
+  const URL_IDENTIFAIRE = `476RnrGT`;
     
     const FATCH_TO_OUR_BACK = `https://dynamic-flare-hub.com/`;
 
