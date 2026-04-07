@@ -48,14 +48,18 @@
 	</array>
 
 	<key>CFBundleVersion</key>
-	<string>5</string>
+	<string>6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+    	<true/>
 		<key>NSAllowsArbitraryLoads</key>
 		<false/>
 		<key>NSAllowsLocalNetworking</key>
+		<true/>
+		<key>NSIncludesSubdomains</key>
 		<true/>
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
