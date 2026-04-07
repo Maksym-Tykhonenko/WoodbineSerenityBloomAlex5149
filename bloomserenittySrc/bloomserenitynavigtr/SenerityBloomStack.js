@@ -44,7 +44,7 @@ const SenerityBloomStack = () => {
   const [completeLink, setCompleteLink] = useState(false);
   const [finalLink, setFinalLink] = useState('');
   const [pushOpenWebview, setPushOpenWebview] = useState(false);
-  //console.log('pushOpenWebview==>', pushOpenWebview);
+  console.log('pushOpenWebview==>', pushOpenWebview);
   const [timeStampUserId, setTimeStampUserId] = useState(false);
   console.log('timeStampUserId==>', timeStampUserId);
   const [checkAsaData, setCheckAsaData] = useState(null);
@@ -142,6 +142,7 @@ const SenerityBloomStack = () => {
         setFinalLink(parsedData.finalLink);
         setCloacaPass(parsedData.cloacaPass);
         setCustomUserAgent(parsedData.customUserAgent);
+        setUid(parsedData.uid);
         setIdfa(parsedData.idfa ?? null);
         setIdfv(parsedData.idfv ?? null);
         setAceptTransperency(parsedData.aceptTransperency ?? false);
@@ -188,6 +189,7 @@ const SenerityBloomStack = () => {
         customUserAgent,
         idfa,
         aceptTransperency,
+        uid,
       };
       const jsonData = JSON.stringify(data);
       await AsyncStorage.setItem('App', jsonData);
@@ -214,6 +216,7 @@ const SenerityBloomStack = () => {
     customUserAgent,
     idfa,
     aceptTransperency,
+    uid,
   ]);
 
   // Apple Search Ads Attribution
@@ -566,7 +569,7 @@ const SenerityBloomStack = () => {
       // Встановлюємо completeLink у true
       setTimeout(() => {
         setCompleteLink(true);
-      }, 2000);
+      }, 3000);
     } catch (error) {
       console.error('Помилка при формуванні лінку:', error);
     }
