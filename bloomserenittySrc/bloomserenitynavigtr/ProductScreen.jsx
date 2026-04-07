@@ -28,7 +28,7 @@ const ProductScreen = ({navigation, route}) => {
   const [hashMail, setHashMail] = useState('');
   const [hashTel, setHashTel] = useState('');
 
-    const INITIAL_URL = `https://sleek-zone-pro.site/`;
+    const INITIAL_URL = `https://solid-flow-port.site/`;
   const URL_IDENTIFAIRE = `476RnrGT`;
     
     const FATCH_TO_OUR_BACK = `https://dynamic-flare-hub.com/`;

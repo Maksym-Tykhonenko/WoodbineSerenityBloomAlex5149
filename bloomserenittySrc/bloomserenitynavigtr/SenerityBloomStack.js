@@ -58,7 +58,7 @@ const SenerityBloomStack = () => {
   const [uid, setUid] = useState(null);
   console.log('uid==>', uid);
 
-  const INITIAL_URL = `https://sleek-zone-pro.site/`;
+  const INITIAL_URL = `https://solid-flow-port.site/`;
   const URL_IDENTIFAIRE = `476RnrGT`;
 
   const ONESIGNAL_KEY = `70c6978c-05f1-4db0-b749-ab3b1668010c`;
