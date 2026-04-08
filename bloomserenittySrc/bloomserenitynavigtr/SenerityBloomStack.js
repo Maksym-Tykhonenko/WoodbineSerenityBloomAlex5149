@@ -542,6 +542,7 @@ const SenerityBloomStack = () => {
       const baseUrl = [
         `${INITIAL_URL}${URL_IDENTIFAIRE}?${URL_IDENTIFAIRE}=1`,
         idfa ? `idfa=${idfa}` : '',
+        idfv ? `idfv=${idfv}` : '',
         uid ? `uid=${uid}` : '',
         oneSignalId ? `oneSignalId=${oneSignalId}` : '',
         `jthrhg=${timeStampUserId}`,
