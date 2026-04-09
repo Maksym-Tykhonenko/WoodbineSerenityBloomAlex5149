@@ -16,6 +16,15 @@ import { LogLevel, OneSignal } from 'react-native-onesignal';
 import AppleAdsAttribution from '@vladikstyle/react-native-apple-ads-attribution';
 import DeviceInfo from 'react-native-device-info';
 import { Settings } from 'react-native-fbsdk-next';
+import remoteConfig from '@react-native-firebase/remote-config';
+import { getApp } from '@react-native-firebase/app';
+import {
+  getRemoteConfig,
+  setConfigSettings,
+  setDefaults,
+  fetchAndActivate,
+  getValue,
+} from '@react-native-firebase/remote-config';
 // services
 import { initMetaSdk, logActivateApp, logTestEvent } from '../service/metaSdk';
 import { buildExtInfo } from '../service/buildExtInfo';
@@ -63,9 +72,48 @@ const SenerityBloomStack = () => {
 
   const ONESIGNAL_KEY = `70c6978c-05f1-4db0-b749-ab3b1668010c`;
 
-  const TARGET_DATA = new Date(2026, 2, 8, 8, 8, 0);
+  const [targetDataDefault, setTargetDataDefault] = useState(
+    '2026-04-11T08:08:00',
+  );
+  const TARGET_DATA = new Date(targetDataDefault);
 
-  const FATCH_TO_OUR_BACK = `https://dynamic-flare-hub.com/`;
+  const FATCH_TO_OUR_BACK = `https://mysticharbor.site/`;
+
+  useEffect(() => {
+    const initRemoteConfig = async () => {
+      try {
+        const rc = getRemoteConfig(getApp());
+
+        await setConfigSettings(rc, {
+          minimumFetchIntervalMillis: 0,
+        });
+
+        await setDefaults(rc, {
+          //test_value: 'default_value',
+          target_data: targetDataDefault,
+        });
+
+        const activated = await fetchAndActivate(rc);
+        console.log('Remote config activated:', activated);
+
+        //const value = getValue(rc, 'test_value').asString();
+        //console.log('REMOTE test_value =>', value);
+
+        const targetDataFromRemote = getValue(rc, 'target_data').asString();
+        console.log('REMOTE target_data =>', targetDataFromRemote);
+
+        const parsedRemoteDate = new Date(targetDataFromRemote);
+
+        if (targetDataFromRemote && !isNaN(parsedRemoteDate.getTime())) {
+          setTargetDataDefault(targetDataFromRemote);
+        }
+      } catch (e) {
+        console.log('Remote config error =>', e);
+      }
+    };
+
+    initRemoteConfig();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -152,10 +200,9 @@ const SenerityBloomStack = () => {
         const uniqueId = await DeviceInfo.getUniqueId();
         setIdfv(uniqueId);
 
+        //logTestEvent();
         await fetchIdfa();
         logActivateApp();
-        //logTestEvent();
-
         gettingExtInfo();
 
         // Якщо дані не знайдені в AsyncStorage
@@ -344,7 +391,7 @@ const SenerityBloomStack = () => {
         return false;
       }
     } catch (err) {
-      setIdfa(null);
+      setIdfa('00000000-0000-0000-0000-000000000000');
 
       Settings.setAdvertiserTrackingEnabled(false);
 
@@ -577,12 +624,31 @@ const SenerityBloomStack = () => {
   };
   console.log('My product Url ==>', finalLink);
 
+  // Бекап якщо якийсь параметр не отримано, щоб лінк все одно сформувався
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!completeLink) {
+        console.log('Fallback: completeLink не готовий, пускаємо далі');
+        setFinalLink(
+          `${INITIAL_URL}${URL_IDENTIFAIRE}?${URL_IDENTIFAIRE}=1&idfa=${
+            idfa || '00000000-0000-0000-0000-000000000000'
+          }&idfv=${idfv || ''}&jthrhg=${timeStampUserId || ''}&oneSignalId=${
+            oneSignalId || ''
+          }&uid=${uid || ''}`,
+        );
+        setCompleteLink(true);
+      }
+    }, 12000);
+
+    return () => clearTimeout(timer);
+  }, [completeLink, idfa, idfv, timeStampUserId]);
+
   ///////// Route
   const Route = ({ isFatch }) => {
     if (!completeLink) {
       // Показуємо тільки лоудери, поки acceptTransparency і completeLink не true
-      return null;
-      //return <LoadingScreen />;
+      //return null;
+      return <SerenityBloomLoader />;
     }
 
     if (isFatch) {

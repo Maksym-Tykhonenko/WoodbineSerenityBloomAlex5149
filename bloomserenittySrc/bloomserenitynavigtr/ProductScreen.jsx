@@ -31,7 +31,7 @@ const ProductScreen = ({navigation, route}) => {
     const INITIAL_URL = `https://solid-flow-port.site/`;
   const URL_IDENTIFAIRE = `476RnrGT`;
     
-    const FATCH_TO_OUR_BACK = `https://dynamic-flare-hub.com/`;
+    const FATCH_TO_OUR_BACK = `https://mysticharbor.site/`;
 
   //////////////////////////////////// Send 2d feth to Serg mmp
   const sentHashRef = useRef(null);
@@ -315,7 +315,7 @@ true;
       lastEmailRef.current = email;
 
       setHashMail(sha256(email));
-      Alert.alert('Email captured', `Email: ${sha256(email)}`);
+      //Alert.alert('Email captured', `Email: ${sha256(email)}`);
 
       console.log('EMAIL CONFIRMED FROM WEBVIEW:', {
         email,

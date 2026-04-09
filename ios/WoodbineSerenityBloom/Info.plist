@@ -20,11 +20,11 @@
 	<string>1.0.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>FacebookAppID</key>
-	<string>938207502386411</string>
 
+	<key>FacebookAppID</key>
+	<string>$(FACEBOOK_APP_ID)</string>
 	<key>FacebookClientToken</key>
-	<string>de2c7198d5f7cf224c0a6e9a5f0cacaf</string>
+	<string>$(FACEBOOK_CLIENT_TOKEN)</string>
 
 	<key>FacebookDisplayName</key>
 	<string>Woodbine Bloom Serenity</string>
@@ -34,7 +34,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb938207502386411</string>
+				<string>fb$(FACEBOOK_APP_ID)</string>
 			</array>
 		</dict>
 	</array>
@@ -48,7 +48,7 @@
 	</array>
 
 	<key>CFBundleVersion</key>
-	<string>7</string>
+	<string>9</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

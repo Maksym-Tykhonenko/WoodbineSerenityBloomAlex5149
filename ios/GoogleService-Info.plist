@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDNElQrZpikpl18AuiQWI6Ykzc6hXSOXmw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>209704214128</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.skjgla.vsltlk.bllomsdf</string>
+	<key>PROJECT_ID</key>
+	<string>woobbine-bloom-serenity</string>
+	<key>STORAGE_BUCKET</key>
+	<string>woobbine-bloom-serenity.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:209704214128:ios:0f0cf93fe9c49afad05eb5</string>
+</dict>
+</plist>

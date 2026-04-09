@@ -2,6 +2,7 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
+import Firebase
 import FBSDKCoreKit
 
 @main
@@ -10,7 +11,7 @@ class AppDelegate: RCTAppDelegate {
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
   ) -> Bool {
-
+    FirebaseApp.configure()
     ApplicationDelegate.shared.application(
       application,
       didFinishLaunchingWithOptions: launchOptions
